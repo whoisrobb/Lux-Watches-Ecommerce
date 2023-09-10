@@ -1,10 +1,59 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { serverUrl } from '../utils/url'
+
+const watchBrands1 = [   
+    'Audemars Piguet',
+    'Vacheron Constantin',
+    'Patek Phillipe',
+    'Cartier',
+    'Rolex',
+    'Breguet',
+]
+
+const watchBrands2 =[
+    'Breitling',
+    'Omega',
+    'Bulgari',
+    'Casio',
+    'Tissot',
+    'Seiko',
+]
 
 const Header = () => {
     const [watchesDropdown, setWatchesDropdown] = useState(false)
     const [accessoriesDropdown, setAccessoriesDropdown] = useState(false)
     const [servicesDropdown, setServicesDropdown] = useState(false)
+    const [column1, setColumn1] = useState(null)
+    const [column2, setColumn2] = useState(null)
+
+    useEffect(() => {
+        // Function to fetch brand names
+        const fetchBrandNames = async () => {
+            try {
+                const response = await fetch(`${serverUrl}/brands/all`);
+                if (response.ok) {
+                    const data = await response.json()
+    
+                    // Split the brand names into two columns
+                    const midIndex = Math.ceil(data.length / 2)
+                    const brands1 = data.slice(0, midIndex)
+                    const brands2 = data.slice(midIndex)
+                    
+                    setColumn1(brands1)
+                    setColumn2(brands2)
+                }
+            } catch (err) {
+                console.error(err)
+            }
+        }
+    
+        // Fetch brand names when the component mounts
+        fetchBrandNames()
+    }, [])
+    
+    // console.log(column1)
+    // console.log(column2)
 
   return (
     <div className='header'>
@@ -62,22 +111,28 @@ const Header = () => {
                             <div className="the-brands">
                                 <div className="type-1">
                                     <ul>
-                                        <li><Link to={'/'}>Audemars Piguet</Link></li>
-                                        <li><Link to={'/'}>Vacheron Constantin</Link></li>
-                                        <li><Link to={'/'}>Patek Phillipe</Link></li>
-                                        <li><Link to={'/'}>Cartier</Link></li>
-                                        <li><Link to={'/'}>Rolex</Link></li>
-                                        <li><Link to={'/'}>Breguet</Link></li>
-                                    </ul>
+                                        {column1 ? (
+                                            column1.map((brand, index) => (
+                                                    <li key={index}>
+                                                        <Link to={`/watches?brand=${brand._id}`}>{brand.name}</Link>
+                                                    </li>
+                                            ))
+                                            ) : (
+                                                <p>Loading brands for column 1...</p>
+                                                )}
+                                            </ul>
                                 </div>
                                 <div className="type-2">
                                     <ul>
-                                        <li><Link to={'/'}>Breitling</Link></li>
-                                        <li><Link to={'/'}>Omega</Link></li>
-                                        <li><Link to={'/'}>Bulgari</Link></li>
-                                        <li><Link to={'/'}>Casio</Link></li>
-                                        <li><Link to={'/'}>Tissot</Link></li>
-                                        <li><Link to={'/'}>Seiko</Link></li>
+                                        {column2 ? (
+                                            column2.map((brand, index) => (
+                                                <li key={index}>
+                                                    <Link to={`/watches?brand=${brand._id}`}>{brand.name}</Link>
+                                                </li>
+                                            ))
+                                            ) : (
+                                                <li>Loading brands for column 2...</li>
+                                        )}
                                     </ul>
                                 </div>
                             </div>
@@ -123,11 +178,3 @@ const Header = () => {
 }
 
 export default Header
-
-// Chronographs
-// Diving Watches
-// GMT Watches
-// Vintage Watches
-// Gents Watches
-// Ladies Watches
-// Unisex Watches

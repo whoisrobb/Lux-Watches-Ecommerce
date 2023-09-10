@@ -18,9 +18,17 @@ export const createWatch = async (req, res) => {
 /* GET WATCHES */
 export const getWatch = async (req, res) => {
     try {
-        const { type } = req.query
-        const watch = await Watch.find({ type: { $in: [type] } }).populate('brand', ['name'])
-        res.status(200).json(watch)
+        const { type, brand } = req.query
+
+        if (type) {
+            const watch = await Watch.find({ type: { $in: [type] } }).populate('brand', ['name'])
+            return res.status(200).json(watch)
+        }
+
+        if (brand) {
+            const watch = await  Watch.find({ brand: brand }).populate('brand', ['name'])
+            return res.status(200).json(watch)
+        }
     } catch (err) {
         res.status(500).json({ message: err.message })
     }

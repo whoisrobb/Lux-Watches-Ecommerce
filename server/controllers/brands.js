@@ -25,3 +25,16 @@ export const getBrand = async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 }
+
+/* GET ALL BRANDS */
+export const getAllBrands = async (req, res) => {
+    try {
+        // Use Mongoose to find all brand documents and project only the 'name' field
+        const brands = await Brand.find({}, 'name')
+    
+        // Send the array of brand names as a JSON response
+        res.status(200).json(brands)
+      } catch (error) {
+        res.status(500).json({ message: err.message })
+      }
+}

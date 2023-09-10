@@ -13,14 +13,32 @@ const options = [
     'Unisex',
 ]
 
+const watchBrands = [   
+    'Audemars Piguet',
+    'Vacheron Constantin',
+    'Patek Phillipe',
+    'Cartier',
+    'Rolex',
+    'Breguet',
+    'Breitling',
+    'Omega',
+    'Bulgari',
+    'Casio',
+    'Tissot',
+    'Seiko',
+]
+
 const Models = () => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
     const [brandId, setBrandId] = useState('')
-    const [brand, setBrand] = useState('Rolex')
+    const [brand, setBrand] = useState('Audemars Piguet')
     const [files, setFiles] = useState(null)
     const [selectedOptions, setSelectedOptions] = useState([])
+    
+    const [brandName, setBrandName] = useState('')
+    const [brandDescription, setBrandDescription] = useState('')
 
     // const formData = { name, price, description, type: selectedOptions, brand: brandId }
     // console.log(formData)
@@ -55,7 +73,6 @@ const Models = () => {
         formData.append('name', name)
         formData.append('price', price)
         formData.append('description', description)
-        // formData.append('type', selectedOptions)
         formData.append('brand', brandId)
         formData.append('image', files)
         
@@ -92,6 +109,27 @@ const Models = () => {
     } else {
       // If the option is not selected, add it to the array
       setSelectedOptions([...selectedOptions, option])
+    }
+  }
+
+  const handleBrandSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+        const response = await fetch(`${serverUrl}/brands/create`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: brandName, description: brandDescription })
+        })
+        .then((response) => {
+            if (response.ok) {
+                console.log('success')
+            }
+        })
+    } catch (err) {
+        console.error(err)
     }
   }
 
@@ -165,10 +203,9 @@ const Models = () => {
                     value={brand}
                     onChange={(e) => setBrand(e.target.value)}
                     >
-                    <option value="Rolex">Rolex</option>
-                    <option value="Audemars Piguet">Audemars Piguet</option>
-                    <option value="Vacheron Constantin">Vacheron Constatin</option>
-                    {/* Add more options as needed */}
+                    { watchBrands.map((brand) => {
+                        return <option key={brand} value={`${brand}`}>{ brand }</option>
+                    }) }
                 </select>
             </div>
 
@@ -190,6 +227,39 @@ const Models = () => {
             </ul>
 
             <button type='submit'>Send</button>
+        </form>
+        <hr/>
+        <form onSubmit={handleBrandSubmit}>
+            
+            <div className="brandName">
+                <label>
+                    <input
+                        type="brandName"
+                        className="brandName"
+                        name='brandName'
+                        value={brandName}
+                        onChange={(e) => setBrandName(e.target.value)}
+                        placeholder='brandName'
+                        required
+                    />
+                </label>
+            </div>
+            
+            <div className="brandDescription">
+                <label>
+                    <input
+                        type="brandDescription"
+                        className="brandDescription"
+                        name='brandName'
+                        value={brandDescription}
+                        onChange={(e) => setBrandDescription(e.target.value)}
+                        placeholder='brandDescription'
+                        required
+                    />
+                </label>
+            </div>
+
+            <button type="submit">Send</button>
         </form>
     </div>
   )

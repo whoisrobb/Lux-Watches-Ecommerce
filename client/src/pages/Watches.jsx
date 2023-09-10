@@ -1,36 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import { serverUrl } from '../utils/url'
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
 
 const Watches = () => {
     const [data, setData] = useState(null)
-    const [queryParams, setQueryParams] = useState('')
     const location = useLocation()
     const searchParams = new URLSearchParams(location.search)
     const watchType = searchParams.get('type')
     const watchBrand = searchParams.get('brand')
 
     useEffect(() => {
-        if (watchType) {
-            setQueryParams(`type=${watchType}`)
-        }
-
         fetchWatch()
-    }, [watchType])
+    }, [watchType, watchBrand])
 
 
     const fetchWatch = async () => {
         try {
-            const response = await fetch(`${serverUrl}/watch/get?type=${watchType}`)
-            // const response = await fetch(`${serverUrl}/watch/get?type=Gents`)
+            let response
+
+            if (watchType) {
+                response = await fetch(`${serverUrl}/watch/get?type=${watchType}`)
+            } else if (watchBrand) {
+                response = await fetch(`${serverUrl}/watch/get?brand=${watchBrand}`)
+            }
+
             const watchData = await response.json(response)
             setData(watchData)
         } catch (err) {
             console.error(err)
         }
     }
-    console.log(watchType)
-    console.log(watchBrand)
 
   return (
     <div>
