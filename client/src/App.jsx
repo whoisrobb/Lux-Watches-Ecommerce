@@ -14,17 +14,19 @@ import Refurbishing from './pages/Refurbishing'
 import Valuation from './pages/Valuation'
 import Models from './devPages/Models'
 import Watches from './pages/Watches'
+import ProductDetail from './pages/ProductDetail'
 
 function App() {
 
   return (
-    <div>
+    <div className='app'>
       <Header />
 
       <Routes>
         <Route path='/models' element={<Models />} />
         <Route path='/' element={<Home />} />
         <Route path='/watches' element={<Watches />} />
+        <Route path='/detail/:id' element={<ProductDetail />} />
 
         {/* INFORMATIONAL PAGES */}
         <Route path='/repairs' element={<Repairs />} />

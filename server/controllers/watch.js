@@ -33,3 +33,17 @@ export const getWatch = async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 }
+
+
+/* GET WATCH ITEM */
+export const getWatchItem = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const watch = await Watch.findById(id).populate('brand', ['name'])
+        return res.status(200).json(watch)
+        
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}

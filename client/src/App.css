@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
 body {
   box-sizing: border-box;
   margin: 0;
@@ -5,6 +7,13 @@ body {
   width: 100vw;
   overflow-x: hidden;
   padding-top: 5rem;
+}
+
+.app {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 a {
@@ -28,8 +37,23 @@ h1, h2, h3, h4, h5, h6, p {
   cursor: default;
 }
 
+p, li, a {
+  font-family: "Josefin sans";
+  color: rgba(30, 30, 30, 0.7);
+}
+
+h1 {
+  text-transform: uppercase;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "nunito sans";
+  font-weight: 700;
+}
+
 button {
   cursor: pointer;
+  font-family: "Josefin sans";
 }
 
 .uil {
@@ -101,6 +125,39 @@ button {
 }
 .header .bottom .dropdown-button .accessories {
   width: 10rem;
+}
+
+/* HOME */
+#home .bg-image {
+  height: 35rem;
+  width: 100%;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -20;
+}
+#home .bg-image .wrapper {
+  color: #dddddd;
+  position: absolute;
+  left: 3rem;
+  bottom: 5rem;
+  width: 40%;
+}
+#home .bg-image .wrapper h1 {
+  font-size: 2.5rem;
+}
+#home .bg-image .wrapper p {
+  color: #dddddd;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+#home .bg-image .wrapper a {
+  color: #dddddd;
+  background: black;
+  font-family: "Josefin sans";
+  padding: 1rem 2rem;
 }
 
 /* RETURNS POLICY, DEPOSIT POLICY, PRIVACY POLICY, SHIPPING POLICY, TERMS OF SERVICE, REPAIRS, REFURBISHING, VALUATION */

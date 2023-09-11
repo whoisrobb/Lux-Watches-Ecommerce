@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { serverUrl } from '../utils/url'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const Watches = () => {
     const [data, setData] = useState(null)
+    const [brandData, setBrandData] = useState()
     const location = useLocation()
     const searchParams = new URLSearchParams(location.search)
     const watchType = searchParams.get('type')
@@ -17,6 +18,7 @@ const Watches = () => {
     const fetchWatch = async () => {
         try {
             let response
+            let dataBrand
 
             if (watchType) {
                 response = await fetch(`${serverUrl}/watch/get?type=${watchType}`)
@@ -38,14 +40,18 @@ const Watches = () => {
                 {
                     data.map((item, index) => (
                         <div key={index}>
-                            <h2>{item.name}</h2>
-                            <p>{item.brand.name}</p>
-                            <img src={`${serverUrl}/uploads/${item.coverImage}`} alt="" />
-                            { item.type.map((brandType, index) => (
+                            <Link to={`/detail/${item._id}`}>
+                                <img src={`${serverUrl}/uploads/${item.coverImage}`} alt="" />
+                            </Link>
+                            <div className="brand-name">
+                                <Link to={`/watches?brand=${item.brand._id}`}>{item.brand.name}</Link>
+                            </div>
+                            <h4>{item.name}</h4>
+                            {/* { item.type.map((brandType, index) => (
                                 <p key={index}>{brandType}</p>
-                            ))}
+                            ))} */}
                             <p>{item.price}</p>
-                            <p>{item.description}</p>
+                            {/* <p>{item.description}</p> */}
                             <hr/>
                         </div>
                     ))

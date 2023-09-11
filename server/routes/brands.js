@@ -12,6 +12,10 @@ router.post('/create', createBrand)
 router.post('/one', getBrand)
 
 
+/* GET ONE BRAND BY ID */
+router.post('/byId', getBrand)
+
+
 /* GET ALL BRANDS */
 router.get('/all', getAllBrands)
 

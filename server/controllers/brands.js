@@ -26,6 +26,19 @@ export const getBrand = async (req, res) => {
     }
 }
 
+
+/* GET BRAND BY ID */
+export const getBrandById = async (req, res) => {
+    try {
+        const { _id } = req.body
+        const brand = await Brand.find({ _id: _id })
+        res.status(200).json({ brand })
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
+
+
 /* GET ALL BRANDS */
 export const getAllBrands = async (req, res) => {
     try {

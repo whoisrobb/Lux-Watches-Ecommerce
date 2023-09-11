@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
 
 $dark: #1e1e1e;
+$light: #dddddd;
+$sans: 'Josefin sans';
+$title: 'nunito sans';
 
 body {
     box-sizing: border-box;
@@ -8,6 +14,13 @@ body {
     width: 100vw;
     overflow-x: hidden;
     padding-top: 5rem;
+}
+
+.app {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 a {
@@ -21,7 +34,6 @@ ul {
 }
 
 li {
-    // list-style: none;
     margin: 0;
     padding: 0;
 }
@@ -32,8 +44,23 @@ h1, h2, h3, h4, h5, h6, p {
     cursor: default;
 }
 
+p, li, a {
+    font-family: $sans;
+    color: rgba($dark, .7);
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $title;
+    font-weight: 700;
+}
+
 button {
     cursor: pointer;
+    font-family: $sans;
 }
 
 .uil {
@@ -52,8 +79,6 @@ button {
     li {
         list-style: none;
     }
-    // border-bottom: 1px solid rgba($dark, .3);
-    // background: red;
 
     .top {
         display: flex;
@@ -91,7 +116,6 @@ button {
 
             .dropdown-container {
                 position: absolute;
-                // top: 2rem;
                 background: white;
                 box-shadow: 0 5px 5px rgba($dark, .15);
                 text-transform: capitalize;
@@ -122,6 +146,46 @@ button {
             .accessories {
                 width: 10rem;
 
+            }
+        }
+    }
+}
+
+
+/* HOME */
+#home {
+    .bg-image {
+        height: 35rem;
+        width: 100%;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -20;
+
+        .wrapper {
+            color: $light;
+            position: absolute;
+            left: 3rem;
+            bottom: 5rem;
+            width: 40%;
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            p {
+                color: $light;
+                font-size: .8rem;
+                margin-top: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            a {
+                color: $light;
+                background: black;
+                font-family: $sans;
+                padding: 1rem 2rem;
             }
         }
     }
