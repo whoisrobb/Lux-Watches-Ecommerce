@@ -34,31 +34,29 @@ const Watches = () => {
     }
 
   return (
-    <div>
-        {data &&
-            <div>
+    <section id='watches'>
+        {
+            data &&
+                <div className='wrapper'>
                 {
                     data.map((item, index) => (
-                        <div key={index}>
-                            <Link to={`/detail/${item._id}`}>
-                                <img src={`${serverUrl}/uploads/${item.coverImage}`} alt="" />
-                            </Link>
+                        <div className='item' key={index}>
+                            <div className="img">
+                                <Link to={`/detail/${item._id}`}>
+                                    <img src={`${serverUrl}/uploads/${item.coverImage}`} alt="" />
+                                </Link>
+                            </div>
                             <div className="brand-name">
                                 <Link to={`/watches?brand=${item.brand._id}`}>{item.brand.name}</Link>
                             </div>
                             <h4>{item.name}</h4>
-                            {/* { item.type.map((brandType, index) => (
-                                <p key={index}>{brandType}</p>
-                            ))} */}
                             <p>{item.price}</p>
-                            {/* <p>{item.description}</p> */}
-                            <hr/>
                         </div>
                     ))
                 }
             </div>
         }
-    </div>
+    </section>
   )
 }
 

@@ -1,24 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { serverUrl } from '../utils/url'
+import { useCart } from './CartProvider'
 
-const watchBrands1 = [   
-    'Audemars Piguet',
-    'Vacheron Constantin',
-    'Patek Phillipe',
-    'Cartier',
-    'Rolex',
-    'Breguet',
-]
-
-const watchBrands2 =[
-    'Breitling',
-    'Omega',
-    'Bulgari',
-    'Casio',
-    'Tissot',
-    'Seiko',
-]
 
 const Header = () => {
     const [watchesDropdown, setWatchesDropdown] = useState(false)
@@ -26,6 +10,8 @@ const Header = () => {
     const [servicesDropdown, setServicesDropdown] = useState(false)
     const [column1, setColumn1] = useState(null)
     const [column2, setColumn2] = useState(null)
+
+    const { cartQuantity } = useCart()
 
     useEffect(() => {
         // Function to fetch brand names
@@ -53,7 +39,7 @@ const Header = () => {
     }, [])
     
     // console.log(column1)
-    // console.log(column2)
+    console.log(JSON.stringify(cartQuantity))
 
   return (
     <div className='header'>
@@ -66,7 +52,7 @@ const Header = () => {
                     <i className="uil uil-search"></i>
                 </div>
                 <div className="cart">
-                    <Link to={''}><i className="uil uil-shopping-cart"></i></Link>
+                    <Link to={'/cart'}><i className="uil uil-shopping-cart"></i>{cartQuantity > 0 ? <span>{JSON.stringify(cartQuantity)}</span> : ''}</Link>
                 </div>
                 <div className="menu">
                     <i className="uil uil-bars"></i>
@@ -100,10 +86,10 @@ const Header = () => {
                                     <Link to={'/watches?type=Gents'}>Gents Watches</Link>
                                 </li>
                                 <li>
-                                    <Link to={'/watches?Ladies'}>Ladies Watches</Link>
+                                    <Link to={'/watches?type=Ladies'}>Ladies Watches</Link>
                                 </li>
                                 <li>
-                                    <Link to={'/watches?Unisex'}>Unisex Watches</Link>
+                                    <Link to={'/watches?type=Unisex'}>Unisex Watches</Link>
                                 </li>
                             </ul>
                         </div>

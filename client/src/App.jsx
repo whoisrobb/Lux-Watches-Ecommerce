@@ -15,32 +15,37 @@ import Valuation from './pages/Valuation'
 import Models from './devPages/Models'
 import Watches from './pages/Watches'
 import ProductDetail from './pages/ProductDetail'
+import ShoppingCart from './pages/ShoppingCart'
+import CartProvider from './components/CartProvider'
 
 function App() {
 
   return (
-    <div className='app'>
-      <Header />
+    <CartProvider>
+      <div className='app'>
+        <Header />
 
-      <Routes>
-        <Route path='/models' element={<Models />} />
-        <Route path='/' element={<Home />} />
-        <Route path='/watches' element={<Watches />} />
-        <Route path='/detail/:id' element={<ProductDetail />} />
+        <Routes>
+          <Route path='/models' element={<Models />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/watches' element={<Watches />} />
+          <Route path='/detail/:id' element={<ProductDetail />} />
+          <Route path='/cart' element={<ShoppingCart />} />
 
-        {/* INFORMATIONAL PAGES */}
-        <Route path='/repairs' element={<Repairs />} />
-        <Route path='/refurbishing' element={<Refurbishing />} />
-        <Route path='/valuation' element={<Valuation />} />
-        <Route path='/returns-policy' element={<ReturnsPolicy />} />
-        <Route path='/deposit-policy' element={<DepositPolicy />} />
-        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
-        <Route path='/shipping-policy' element={<ShippingPolicy />} />
-        <Route path='/terms-of-service' element={<TermsOfService />} />
-      </Routes>
+          {/* INFORMATIONAL PAGES */}
+          <Route path='/repairs' element={<Repairs />} />
+          <Route path='/refurbishing' element={<Refurbishing />} />
+          <Route path='/valuation' element={<Valuation />} />
+          <Route path='/returns-policy' element={<ReturnsPolicy />} />
+          <Route path='/deposit-policy' element={<DepositPolicy />} />
+          <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+          <Route path='/shipping-policy' element={<ShippingPolicy />} />
+          <Route path='/terms-of-service' element={<TermsOfService />} />
+        </Routes>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </CartProvider>
   )
 }
 

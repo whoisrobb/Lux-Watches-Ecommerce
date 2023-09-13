@@ -81,8 +81,28 @@ button {
 .header .top .actions {
   display: flex;
 }
-.header .top .actions .uil {
-  margin-left: 1.5rem;
+.header .top .actions a {
+  padding: 2px;
+}
+.header .top .actions .cart {
+  position: relative;
+}
+.header .top .actions .cart span {
+  position: absolute;
+  background: rgb(247, 37, 37);
+  color: white;
+  height: 1.1rem;
+  width: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: -0.3rem;
+  right: -0.7rem;
+  border-radius: 50%;
+  font-size: 0.8rem;
+}
+.header .top .actions .search, .header .top .actions .cart, .header .top .actions .menu {
+  margin-left: 1.2rem;
 }
 .header .bottom {
   display: flex;
@@ -135,7 +155,6 @@ button {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: -20;
 }
 #home .bg-image .wrapper {
   color: #dddddd;
@@ -159,6 +178,73 @@ button {
   font-family: "Josefin sans";
   padding: 1rem 2rem;
 }
+#home .services {
+  display: grid;
+  padding: 2rem 3rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+#home .services a {
+  height: 17rem;
+  padding: 1rem;
+}
+#home .services a a {
+  color: #dddddd;
+  font-size: 2rem;
+  z-index: -10;
+}
+#home .brands {
+  padding: 2rem 3rem;
+}
+#home .brands h1 {
+  text-align: center;
+  margin: 1rem 0;
+}
+#home .brands .wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+#home .brands .wrapper .item {
+  width: 100%;
+}
+#home .brands .wrapper .item p {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+#home .brands .wrapper .item a {
+  height: 20rem;
+  overflow: hidden;
+}
+#home .brands .wrapper .item a img {
+  height: 90%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/* WATCHES */
+#watches {
+  padding: 3rem;
+}
+#watches .wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+#watches .wrapper .item {
+  height: 20rem;
+}
+#watches .wrapper .item .img {
+  height: 75%;
+  overflow: hidden;
+}
+#watches .wrapper .item .img img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 
 /* RETURNS POLICY, DEPOSIT POLICY, PRIVACY POLICY, SHIPPING POLICY, TERMS OF SERVICE, REPAIRS, REFURBISHING, VALUATION */
 #returns-policy, #deposit-policy, #privacy-policy, #shipping-policy, #terms-of-service, #repairs, #refurbishing, #valuation {
@@ -177,23 +263,104 @@ button {
   list-style: disc;
 }
 
+/* PRODUCT DETAIL */
+#detail {
+  padding: 0 3rem;
+}
+#detail .wrapper {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+#detail .wrapper .img {
+  height: 30rem;
+  aspect-ratio: 0.9;
+}
+#detail .wrapper .img img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#detail .wrapper .details .back-button {
+  margin-bottom: 1rem;
+}
+#detail .wrapper .details .back-button a {
+  text-transform: capitalize;
+}
+#detail .wrapper .details h1 {
+  margin-bottom: 1rem;
+}
+#detail .wrapper .details a {
+  text-transform: uppercase;
+}
+#detail .wrapper .details p.price {
+  margin: 2.5rem 0 1rem 0;
+  font-size: 1.3rem;
+}
+#detail .wrapper .pay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#detail .wrapper .pay .actions {
+  display: flex;
+  align-items: center;
+}
+#detail .wrapper .pay .actions .quantity {
+  margin: 0 0.5rem;
+  font-family: "Josefin sans";
+  color: rgba(30, 30, 30, 0.7);
+}
+#detail .wrapper .pay .actions button {
+  background: transparent;
+  border: 1px solid rgba(30, 30, 30, 0.7);
+  height: 1.7rem;
+  width: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#detail .wrapper .pay .actions button .uil {
+  padding: 0;
+  margin: 0;
+  color: rgba(30, 30, 30, 0.7);
+}
+#detail .wrapper .pay button.cart, #detail .wrapper .pay button.platform {
+  width: 15rem;
+  height: 3rem;
+  margin: 0.5rem;
+  text-transform: capitalize;
+  border: none;
+}
+#detail .wrapper .pay button.cart {
+  background: #1e1e1e;
+  color: #dddddd;
+}
+#detail .wrapper .pay button.platform {
+  border: 1px solid #1e1e1e;
+  background: transparent;
+}
+
 /* FOOTER */
 .footer {
   display: flex;
-  color: white;
   background: #1e1e1e;
+  color: white;
   justify-content: space-between;
   padding: 3rem;
 }
-.footer li {
-  list-style: none;
+.footer p {
+  color: white;
 }
 .footer h2 {
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
 .footer li {
+  color: white;
   margin-bottom: 0.5em;
+  list-style: none;
 }
 .footer a {
   color: rgba(255, 255, 255, 0.7);

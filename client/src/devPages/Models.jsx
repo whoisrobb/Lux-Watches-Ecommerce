@@ -14,18 +14,21 @@ const options = [
 ]
 
 const watchBrands = [   
-    'Audemars Piguet',
-    'Vacheron Constantin',
-    'Patek Phillipe',
-    'Cartier',
     'Rolex',
-    'Breguet',
+    'Audemars Piguet',
+    'Patek Philippe',
+    'Vacheron Constantin',
+    'Cartier',
     'Breitling',
+    'Breguet',
     'Omega',
     'Bulgari',
+    'Tudor',
+    'Tag Heuer',
+    'Nomos',
     'Casio',
-    'Tissot',
     'Seiko',
+    'Tissot'
 ]
 
 const Models = () => {
