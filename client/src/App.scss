@@ -88,7 +88,7 @@ button {
         height: 3rem;
 
         .actions {
-            display: flex;
+            // display: flex;
 
             a {
                 padding: 2px;
@@ -185,7 +185,6 @@ button {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        // z-index: -20;
 
         .wrapper {
             color: $light;
@@ -193,7 +192,6 @@ button {
             left: 3rem;
             bottom: 5rem;
             width: 40%;
-            // z-index: 10;
 
             h1 {
                 font-size: 2.5rem;
@@ -418,6 +416,142 @@ button {
 }
 
 
+/* SHOPPING CART */
+#cart {
+    padding: 1rem 3rem;
+
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        // background: red;
+
+        .items {
+            // background: red;
+            width: 60%;
+            max-height: 80vh;
+            overflow-y: scroll;
+            
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .product {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-top: 1px solid rgba($dark, .3);
+                height: 12rem;
+                padding: 0 1rem;
+
+                button.delete {
+                    height: 1.5rem;
+                    aspect-ratio: 1;
+                    border: none;
+                    background: $dark;
+                    color: $light;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .uil {
+                        font-size: .8rem;
+                    }
+                }
+
+                .img {
+
+                    img {
+                        width: 5rem;
+                    }
+                }
+            }
+        }
+
+        .checkout {
+            background: rgba($light, .5);
+            width: 30%;
+            padding: 1rem 3rem;
+
+            form {
+                width: 100%;
+                position: relative;
+                height: 3rem;
+                margin: 2rem 0;
+
+                input {
+                    padding: 0 1rem;
+                    border: 1px solid rgba($dark, .5);
+                    border-radius: 3px;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 5rem;
+
+                    &::placeholder {
+                        font-family: $sans;
+                    }
+
+                }
+
+                button {
+                    padding: 0 1rem;
+                    border: 1px solid rgba($dark, .5);
+                    // margin-right: .5rem;
+                    border-radius: 3px;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                }
+            }
+            .subtotal, .shipping, .total {
+                display: flex;
+                justify-content: space-between;
+                margin: 1rem 0;
+                font-family: $sans;
+                text-transform: capitalize;
+
+                .key {
+                    color: rgba($dark, .7);
+                }
+
+                .value {
+                    color: $dark;
+                }
+
+            }
+
+            .total {
+                margin: 1.5rem 0;
+
+                p {
+                    font-size: 1.5rem;
+                }
+            }
+
+            button.payment {
+                height: 3rem;
+                width: 100%;
+                margin: 0.5rem;
+                border: none;
+            }
+
+            button.checkout {
+                background: $dark;
+                color: $light;
+            }
+
+            button.platform {
+                background: transparent;
+                border: 1px solid rgba($dark, .5);
+            }
+        }
+    }
+}
+
+
 /* FOOTER */
 .footer {
     display: flex;
@@ -475,4 +609,105 @@ button {
 }
 
 
-/*  */
+.actions {
+    display: flex;
+    align-items: center;
+
+    .quantity {
+        margin: 0 .5rem;
+        font-family: $sans;
+        color: rgb($dark, .7);
+    }
+
+    button {
+        background: transparent;
+        border: 1px solid rgba($dark, .7);
+        height: 1.7rem;
+        width: 1.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .uil {
+            padding: 0;
+            margin: 0;
+            color: rgb($dark, .7);
+        }
+    }
+}
+
+
+/* MEDIA QUERIES */
+@media (max-width: 767px) {
+    /* HEADER */
+    .header {
+        padding: 0 1rem;
+    }
+
+    /* HOME */
+    #home {
+        .bg-image {
+
+            .wrapper {
+                left: 1rem;
+                bottom: 3rem;
+                width: 80%;
+                
+                h1 {
+                    font-size: 2rem;
+                }
+                
+            }
+        }
+
+        .services {
+            padding: 2rem 1rem;
+            grid-template-columns: 1fr;
+        }
+
+        .brands {
+            padding: 2rem 1rem;
+
+            .wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+    /* WATCHES */
+    #watches {
+        padding: 1rem;
+
+        .wrapper {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    /* PRODUCT DETAIL */
+    #detail {
+        padding: 0 1rem;
+
+        .wrapper {
+            flex-direction: column;
+            position: relative;
+            padding-top: 2rem;
+
+            .back-button {
+                position: absolute;
+                top: 0;
+            }
+
+            .pay {
+
+                .actions {
+                    // background: red;
+                }
+
+                button.cart, button.platform {
+                    // height: 1rem;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

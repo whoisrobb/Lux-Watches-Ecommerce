@@ -43,7 +43,7 @@ function App() {
           <Route path='/terms-of-service' element={<TermsOfService />} />
         </Routes>
 
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </CartProvider>
   )

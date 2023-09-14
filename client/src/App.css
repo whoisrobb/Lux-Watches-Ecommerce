@@ -78,9 +78,6 @@ button {
   border-bottom: 1px solid rgba(30, 30, 30, 0.3);
   height: 3rem;
 }
-.header .top .actions {
-  display: flex;
-}
 .header .top .actions a {
   padding: 2px;
 }
@@ -342,6 +339,117 @@ button {
   background: transparent;
 }
 
+/* SHOPPING CART */
+#cart {
+  padding: 1rem 3rem;
+}
+#cart .wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+#cart .wrapper .items {
+  width: 60%;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+#cart .wrapper .items::-webkit-scrollbar {
+  display: none;
+}
+#cart .wrapper .items .product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(30, 30, 30, 0.3);
+  height: 12rem;
+  padding: 0 1rem;
+}
+#cart .wrapper .items .product button.delete {
+  height: 1.5rem;
+  aspect-ratio: 1;
+  border: none;
+  background: #1e1e1e;
+  color: #dddddd;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#cart .wrapper .items .product button.delete .uil {
+  font-size: 0.8rem;
+}
+#cart .wrapper .items .product .img img {
+  width: 5rem;
+}
+#cart .wrapper .checkout {
+  background: rgba(221, 221, 221, 0.5);
+  width: 30%;
+  padding: 1rem 3rem;
+}
+#cart .wrapper .checkout form {
+  width: 100%;
+  position: relative;
+  height: 3rem;
+  margin: 2rem 0;
+}
+#cart .wrapper .checkout form input {
+  padding: 0 1rem;
+  border: 1px solid rgba(30, 30, 30, 0.5);
+  border-radius: 3px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 5rem;
+}
+#cart .wrapper .checkout form input::-moz-placeholder {
+  font-family: "Josefin sans";
+}
+#cart .wrapper .checkout form input::placeholder {
+  font-family: "Josefin sans";
+}
+#cart .wrapper .checkout form button {
+  padding: 0 1rem;
+  border: 1px solid rgba(30, 30, 30, 0.5);
+  border-radius: 3px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+#cart .wrapper .checkout .subtotal, #cart .wrapper .checkout .shipping, #cart .wrapper .checkout .total {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  font-family: "Josefin sans";
+  text-transform: capitalize;
+}
+#cart .wrapper .checkout .subtotal .key, #cart .wrapper .checkout .shipping .key, #cart .wrapper .checkout .total .key {
+  color: rgba(30, 30, 30, 0.7);
+}
+#cart .wrapper .checkout .subtotal .value, #cart .wrapper .checkout .shipping .value, #cart .wrapper .checkout .total .value {
+  color: #1e1e1e;
+}
+#cart .wrapper .checkout .total {
+  margin: 1.5rem 0;
+}
+#cart .wrapper .checkout .total p {
+  font-size: 1.5rem;
+}
+#cart .wrapper .checkout button.payment {
+  height: 3rem;
+  width: 100%;
+  margin: 0.5rem;
+  border: none;
+}
+#cart .wrapper .checkout button.checkout {
+  background: #1e1e1e;
+  color: #dddddd;
+}
+#cart .wrapper .checkout button.platform {
+  background: transparent;
+  border: 1px solid rgba(30, 30, 30, 0.5);
+}
+
 /* FOOTER */
 .footer {
   display: flex;
@@ -389,4 +497,76 @@ button {
   color: white;
 }
 
-/*  *//*# sourceMappingURL=App.css.map */
+.actions {
+  display: flex;
+  align-items: center;
+}
+.actions .quantity {
+  margin: 0 0.5rem;
+  font-family: "Josefin sans";
+  color: rgba(30, 30, 30, 0.7);
+}
+.actions button {
+  background: transparent;
+  border: 1px solid rgba(30, 30, 30, 0.7);
+  height: 1.7rem;
+  width: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.actions button .uil {
+  padding: 0;
+  margin: 0;
+  color: rgba(30, 30, 30, 0.7);
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 767px) {
+  /* HEADER */
+  .header {
+    padding: 0 1rem;
+  }
+  /* HOME */
+  #home .bg-image .wrapper {
+    left: 1rem;
+    bottom: 3rem;
+    width: 80%;
+  }
+  #home .bg-image .wrapper h1 {
+    font-size: 2rem;
+  }
+  #home .services {
+    padding: 2rem 1rem;
+    grid-template-columns: 1fr;
+  }
+  #home .brands {
+    padding: 2rem 1rem;
+  }
+  #home .brands .wrapper {
+    grid-template-columns: 1fr;
+  }
+  /* WATCHES */
+  #watches {
+    padding: 1rem;
+  }
+  #watches .wrapper {
+    grid-template-columns: 1fr;
+  }
+  /* PRODUCT DETAIL */
+  #detail {
+    padding: 0 1rem;
+  }
+  #detail .wrapper {
+    flex-direction: column;
+    position: relative;
+    padding-top: 2rem;
+  }
+  #detail .wrapper .back-button {
+    position: absolute;
+    top: 0;
+  }
+  #detail .wrapper .pay button.cart, #detail .wrapper .pay button.platform {
+    width: 100%;
+  }
+}/*# sourceMappingURL=App.css.map */

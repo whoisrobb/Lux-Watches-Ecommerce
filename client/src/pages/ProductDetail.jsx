@@ -42,7 +42,7 @@ const ProductDetail = () => {
                     </div>
                     <h1>{product.name}</h1>
                     <Link to={`/watches?brand=${product.brand._id}`}>By {product.brand.name}</Link>
-                    <p className='price'>Ksh {product.price}</p>
+                    <p className='price'>{product.price}</p>
                     <p>{product.description}</p>
                 </div>
                 <div className="pay">
