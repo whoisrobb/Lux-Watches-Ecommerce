@@ -5,6 +5,7 @@ import { useCart } from './CartProvider'
 
 
 const Header = () => {
+    const [menu, setMenu] = useState(true)
     const [watchesDropdown, setWatchesDropdown] = useState(false)
     const [accessoriesDropdown, setAccessoriesDropdown] = useState(false)
     const [servicesDropdown, setServicesDropdown] = useState(false)
@@ -34,12 +35,16 @@ const Header = () => {
             }
         }
     
-        // Fetch brand names when the component mounts
         fetchBrandNames()
     }, [])
-    
-    // console.log(column1)
-    console.log(JSON.stringify(cartQuantity))
+
+    const menuOpen = {
+        display: 'none'
+    }
+
+    const menuClose = {
+        display: 'flex'
+    }
 
   return (
     <div className='header'>
@@ -48,23 +53,39 @@ const Header = () => {
                 <Link to={'/'}>Lux Watches</Link>
             </div>
             <div className="actions">
-                <div className="search">
+                <div className="search" style={{cursor: 'pointer'}}>
                     <i className="uil uil-search"></i>
                 </div>
                 <div className="cart">
                     <Link to={'/cart'}><i className="uil uil-shopping-cart"></i>{cartQuantity > 0 ? <span>{JSON.stringify(cartQuantity)}</span> : ''}</Link>
                 </div>
-                <div className="menu">
-                    <i className="uil uil-bars"></i>
+                <div className="menu" style={{cursor: 'pointer'}} onClick={() => setMenu(prevMenu => !prevMenu)}>
+                    {
+                        menu ?
+                            <i className="uil uil-bars"></i>
+                        :
+                            <i className="uil uil-times"></i>
+                    }
                 </div>
             </div>
         </div>
-        <div className="bottom">
+        <div className="bottom"
+            style={ menu ? menuOpen : menuClose }
+        >
             
-            <div className="dropdown-button" onMouseEnter={() => setWatchesDropdown(true)} onMouseLeave={() => setWatchesDropdown(false)}>
+            <div className="dropdown-button"
+                onMouseEnter={() => setWatchesDropdown(true)}
+                onMouseLeave={() => setWatchesDropdown(false)}
+                onClick={() => setWatchesDropdown(prevDropDown => !prevDropDown)}
+            >
                 <button className="dropdown">
                     watches
-                    <i className="uil uil-angle-down"></i>
+                    {
+                        watchesDropdown ?
+                        <i className="uil uil-angle-up"></i>
+                        :
+                        <i className="uil uil-angle-down"></i>
+                    }
                 </button>
                 { watchesDropdown && 
                     <div className="dropdown-container watches">
@@ -127,10 +148,19 @@ const Header = () => {
                 }
             </div>
             
-            <div className="dropdown-button" onMouseEnter={() => setAccessoriesDropdown(true)} onMouseLeave={() => setAccessoriesDropdown(false)}>
+            <div className="dropdown-button"
+                onMouseEnter={() => setAccessoriesDropdown(true)}
+                onMouseLeave={() => setAccessoriesDropdown(false)}
+                onClick={() => setAccessoriesDropdown(prevDropDown => !prevDropDown)}
+            >
                 <button className="dropdown">
                     accessories
-                    <i className="uil uil-angle-down"></i>
+                    {
+                        accessoriesDropdown ?
+                        <i className="uil uil-angle-up"></i>
+                        :
+                        <i className="uil uil-angle-down"></i>
+                    }
                 </button>
                 { accessoriesDropdown && 
                     <div className="dropdown-container accessories">
@@ -143,10 +173,19 @@ const Header = () => {
                 }
             </div>
             
-            <div className="dropdown-button" onMouseEnter={() => setServicesDropdown(true)} onMouseLeave={() => setServicesDropdown(false)}>
+            <div className="dropdown-button"
+                onMouseEnter={() => setServicesDropdown(true)}
+                onClick={() => setServicesDropdown(prevDropDown => !prevDropDown)}
+                onMouseLeave={() => setServicesDropdown(false)}
+            >
                 <button className="dropdown">
                     services
-                    <i className="uil uil-angle-down"></i>
+                    {
+                        servicesDropdown ?
+                        <i className="uil uil-angle-up"></i>
+                        :
+                        <i className="uil uil-angle-down"></i>
+                    }
                 </button>
                 { servicesDropdown && 
                     <div className="dropdown-container accessories">

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
+    
   return (
     <div className='footer'>
         <div className="company">
@@ -40,8 +41,8 @@ const Footer = () => {
         </div>
         <div className="subscription">
             <h2>subscribe</h2>
-            <form action="">
                 <p>Sign up to our moontly newsletter</p>
+            <form action="">
                 <input
                     type="email"
                     name=""

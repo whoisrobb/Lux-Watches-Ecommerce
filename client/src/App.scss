@@ -14,6 +14,10 @@ body {
     width: 100vw;
     overflow-x: hidden;
     padding-top: 5rem;
+    
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .app {
@@ -125,6 +129,7 @@ button {
         justify-content: center;
         align-items: center;
         height: 2rem;
+        transform-origin: top;
 
         .dropdown-button {
             position: relative;
@@ -423,10 +428,8 @@ button {
     .wrapper {
         display: flex;
         justify-content: space-between;
-        // background: red;
 
         .items {
-            // background: red;
             width: 60%;
             max-height: 80vh;
             overflow-y: scroll;
@@ -708,6 +711,37 @@ button {
                     width: 100%;
                 }
             }
+        }
+    }
+    
+    /* RETURNS POLICY, DEPOSIT POLICY, PRIVACY POLICY, SHIPPING POLICY, TERMS OF SERVICE, REPAIRS, REFURBISHING, VALUATION */
+    #returns-policy, #deposit-policy, #privacy-policy, #shipping-policy, #terms-of-service, #repairs, #refurbishing, #valuation {
+        padding: 1rem;
+    }
+    
+    /* SHOPPING CART */
+    #cart {
+        padding: 1rem;
+
+        .wrapper {
+            flex-direction: column;
+            
+            .items {
+                width: 100%;
+            }
+            
+            .checkout {
+                width: auto;
+            }
+        }
+    }
+    
+    /* FOOTER */
+    .footer {
+        flex-direction: column-reverse;
+        // flex-direction: column;
+        form {
+            display: flex;
         }
     }
 }

@@ -1,5 +1,5 @@
 import express from 'express'
-import { createBrand, getAllBrands, getBrand } from '../controllers/brands.js'
+import { createBrand, getAllBrands, getBrand, getBrandByName } from '../controllers/brands.js'
 
 
 const router = express.Router()
@@ -14,6 +14,10 @@ router.post('/one', getBrand)
 
 /* GET ONE BRAND BY ID */
 router.post('/byId', getBrand)
+
+
+/* GET ONE BRAND BY NAME */
+router.post('/byName', getBrandByName)
 
 
 /* GET ALL BRANDS */

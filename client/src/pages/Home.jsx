@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { serverUrl } from '../utils/url'
 
 const services = [
   'Sell',
@@ -8,18 +9,41 @@ const services = [
   'Valuation'
 ]
 
-const watchBrands = [   
-  'Audemars Piguet',
-  'Breitling',
-  'Casio',
-  'Patek Phillipe',
-  'Rolex',
-  'Tudor',
-  'Vacheron Constantin',
-  'Omega',
-]
-
 const Home = () => {
+  const [watchData, setWatchData] = useState(null)
+
+  const name = [
+    'Audemars Piguet',
+    'Breitling',
+    'Casio',
+    'Patek Phillipe',
+    'Rolex',
+    'Tudor',
+    'Vacheron Constantin',
+    'Omega'
+  ]
+  
+  useEffect(() => {
+    // Function to fetch brand names
+    const fetchBrandNames = async () => {
+        try {
+            const response = await fetch(`${serverUrl}/brands/byName`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ name })
+            })
+            const data = await response.json(response)
+            setWatchData(data.brand)
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+    fetchBrandNames()
+  }, [])
+
   return (
     <section id='home'>
       <div
@@ -50,13 +74,14 @@ const Home = () => {
         <h1>featured brands</h1>
         <div className="wrapper">
           {
-            watchBrands.map((brand) => (
-              <div key={brand} className='item'>
+            watchData &&
+            watchData.map((brand) => (
+              <div key={brand._id} className='item'>
                 <Link
-                  to={`/watches?brand=${brand}`}>
-                    <img src={`../brands/${brand}.jpg`} alt="" />
+                  to={`/watches?brand=${brand._id}`}>
+                    <img src={`../brands/${brand.name}.jpg`} alt="" />
                   </Link>
-                  <p>{brand}</p>
+                  <p>{brand.name}</p>
               </div>
             ))
           }
